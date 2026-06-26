@@ -1,15 +1,15 @@
 services:
   - type: web
-    name: telegram-member-tool
+    name: telegram-tool
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app.server:app --host 0.0.0.0 --port $PORT
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: TG_API_ID
         sync: false
       - key: TG_API_HASH
         sync: false
-      - key: ACCOUNTS_JSON
+      - key: TOKEN
         sync: false
       - key: SOURCE_GROUP
         sync: false
@@ -17,9 +17,3 @@ services:
         sync: false
       - key: DAILY_LIMIT
         value: "35"
-      - key: MAX_MEMBERS
-        value: "200"
-      - key: SCHEDULE_TIME
-        value: "09:00"
-      - key: DASHBOARD_TOKEN
-        sync: false
